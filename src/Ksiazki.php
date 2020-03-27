@@ -88,12 +88,12 @@ class Ksiazki
 
     /**
      * Pobiera najlepiej sprzedające się książki.
-     *
+     * @return array
      */
     public function pobierzBestsellery()
     {
-        $sql = "SELECT * FROM ksiazki ORDER BY RAND() LIMIT 5";
+        $sql = "select k.id, k.tytul, k.zdjecie, a.imie, a.nazwisko from ksiazki k join autorzy a on k.id_autora = a.id ORDER BY RAND() LIMIT 5";
 
-        // uzupełnić funkcję
+        return $this->db->pobierzWszystko($sql);
     }
 }
