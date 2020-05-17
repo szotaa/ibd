@@ -55,7 +55,7 @@ include 'header.php';
 						</td>
 						<td><?= $ks['cena'] * $ks['liczba_sztuk'] ?></td>
 						<td style="white-space: nowrap">
-							<a href="koszyk.usun.php" title="usuń z koszyka">
+							<a href="koszyk.usun.php" title="usuń z koszyka" data-id="<?=$ks['id'] ?>" class="aUsunZKoszyka">
                                 <i class="fas fa-trash"></i>
 							</a>
 							<a href="ksiazki.szczegoly.php?id=<?=$ks['id']?>" title="szczegóły">

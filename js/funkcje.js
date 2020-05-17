@@ -15,3 +15,20 @@ $(function() {
 		return false;
 	});
 });
+
+
+$(function() {
+	$(".aUsunZKoszyka").click(function() {
+		const $a = $(this);
+
+		$.post($a.attr('href'), { id_ksiazki: $a.data('id') }, function(resp) {
+			if(resp == 'ok') {
+				location.reload();
+			} else {
+				alert('Wystąpił błąd: ' + resp);
+			}
+		});
+
+		return false;
+	});
+});

@@ -6,7 +6,7 @@ require_once 'vendor/autoload.php';
 
 $koszyk = new Ibd\Koszyk();
 
-if(isset($_POST['id_koszyka'])) {
-    $koszyk->zmienLiczbeSztuk([$_POST['id_koszyka'] => 0]);
+if(isset($_POST['id_ksiazki'])) {
+    $koszyk->zmienLiczbeSztuk([$_POST['id_ksiazki'] => 0]);
     echo 'ok';
 }
