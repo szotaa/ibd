@@ -93,6 +93,19 @@ class Stronicowanie
         return $linki;
     }
 
+    public function pobierzLiczbeRekordow(string $select): string
+    {
+        $num = $this->db->policzRekordy($select, $this->parametryZapytania);
+
+        if($num == 0) {
+            return "Nie znaleziono";
+        }
+
+        $start = $this->strona*$this->naStronie+1;
+        $koniec = min($start + $this->naStronie-1, $num);
+        return "Wyswietlono " .$start. " - " .$koniec. " rekordow z ". $num;
+    }
+
     /**
      * Przetwarza parametry wyszukiwania.
      * Wyrzuca zbędne elementy i tworzy gotowy do wstawienia w linku zestaw parametrów.

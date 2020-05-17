@@ -18,6 +18,7 @@ $stronicowanie = new Stronicowanie($_GET, $zapytanie['parametry']);
 $linki = $stronicowanie->pobierzLinki($zapytanie['sql'], 'ksiazki.lista.php');
 $select = $stronicowanie->dodajLimit($zapytanie['sql']);
 $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
+$liczbaRekordow = $stronicowanie->pobierzLiczbeRekordow($zapytanie['sql'])
 ?>
 
     <h1>Książki</h1>
@@ -94,6 +95,7 @@ $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
         <?php endforeach; ?>
         </tbody>
     </table>
+    <p><?=$liczbaRekordow?></p>
 
     <nav class="text-center">
         <?= $linki ?>
