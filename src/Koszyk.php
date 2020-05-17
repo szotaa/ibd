@@ -90,4 +90,12 @@ class Koszyk
     {
         return $this->db->wykonaj("DELETE FROM koszyk WHERE id_sesji = :id_sesji", ['id_sesji' => $idSesji]);
     }
+
+    public function zwiekszIloscKsiazek($idKsiazki, $idSesji) {
+        $sql = "SELECT * FROM koszyk WHERE id_sesji = :id_sesji AND id_ksiazki = :id_ksiazki";
+        $wynik = $this->db->pobierzWszystko($sql, [':id_ksiazki' => $idKsiazki, ':id_sesji' => $idSesji]);
+        foreach($wynik as $pozycja) {
+            $this->zmienLiczbeSztuk([$pozycja['id'] => $pozycja['liczba_sztuk'] + 1]);
+        }
+    }
 }

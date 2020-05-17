@@ -10,8 +10,7 @@ $koszyk = new Koszyk();
 
 if (isset($_POST['id_ksiazki'])) {
     if ($koszyk->czyIstnieje($_POST['id_ksiazki'], session_id())) {
-			// ksiazka już istnieje w koszyku, zwiększ ilość
-			// TODO: dodać odpowiednią funkcjonalność
+        $koszyk->zwiekszIloscKsiazek($_POST['id_ksiazki'], session_id());
     } else {
 			// książki nie ma w koszyku, dodaj do koszyka
 			if ($koszyk->dodaj($_POST['id_ksiazki'], session_id())) {
