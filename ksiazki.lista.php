@@ -47,6 +47,13 @@ $liczbaRekordow = $stronicowanie->pobierzLiczbeRekordow($zapytanie['sql'])
             <option value="k.tytul DESC"
                 <?= ($_GET['sortowanie'] ?? '') == 'k.tytul DESC' ? 'selected' : '' ?>
             >tytule malejąco
+            <option value="a.nazwisko ASC"
+                <?= ($_GET['sortowanie'] ?? '') == 'a.nazwisko ASC' ? 'selected' : '' ?>
+            >nazwisku rosnąco
+            </option>
+            <option value="a.nazwisko DESC"
+                <?= ($_GET['sortowanie'] ?? '') == 'a.nazwisko DESC' ? 'selected' : '' ?>
+            >nazwisku malejąco
             </option>
             <option value="k.cena ASC"
                 <?= ($_GET['sortowanie'] ?? '') == 'k.cena ASC' ? 'selected' : '' ?>
