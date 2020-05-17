@@ -42,7 +42,7 @@ $bestsellery = $ksiazki->pobierzBestsellery();
         <strong>0</strong> PLN
     </p>
 
-    <div class="col-md-2">
+    <div>
         <h1>Bestsellery</h1>
 
         <?php foreach ($bestsellery as $item):?>
