@@ -1,12 +1,15 @@
 <?php
 
 use Ibd\Ksiazki;
+use Ibd\Koszyk;
 
 require_once 'src/Ksiazki.php';
 require_once 'src/Db.php';
 
 $ksiazki = new Ksiazki();
+$koszyk = new Koszyk();
 $bestsellery = $ksiazki->pobierzBestsellery();
+$wartosc = $koszyk->policzWartosc(session_id());
 ?>
 
 <div class="col-md-3">
@@ -39,7 +42,7 @@ $bestsellery = $ksiazki->pobierzBestsellery();
     <h1>Koszyk</h1>
     <p>
         Suma wartości książek w koszyku:
-        <strong>0</strong> PLN
+        <strong><?=$wartosc?></strong> PLN
     </p>
 
     <div>

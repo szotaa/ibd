@@ -98,4 +98,13 @@ class Koszyk
             $this->zmienLiczbeSztuk([$pozycja['id'] => $pozycja['liczba_sztuk'] + 1]);
         }
     }
+
+    public function policzWartosc($idSesji) {
+        $ksiazki = $this->pobierzWszystkie($idSesji);
+        $cena = 0;
+        foreach ($ksiazki as $ksiazka) {
+            $cena += $ksiazka['liczba_sztuk'] * $ksiazka['cena'];
+        }
+        return round($cena, 2);
+    }
 }
