@@ -23,9 +23,22 @@ class Autorzy
 	 */
 	public function pobierzSelect($params = [])
 	{
-		$sql = "SELECT * FROM autorzy WHERE 1=1 ";
+		$sql = "SELECT a.*, (select count(*) from ksiazki k where a.id = k.id_autora) as liczba_ksiazek FROM autorzy a where 1=1 ";
 
-		return $sql;
+        if(!empty($params['fraza'])) {
+            $sql .= " and a.imie like :fraza or a.nazwisko like :fraza";
+        }
+
+		if(!empty($params['sortowanie'])){
+		    if($params['sortowanie'] == 'a.nazwisko ASC') {
+		        $sql .= " order by a.nazwisko ASC";
+            }
+		    elseif($params['sortowanie'] == 'a.nazwisko DESC') {
+		        $sql .= " order by a.nazwisko DESC";
+            }
+        }
+
+		return ["sql" => $sql, "params" => $params];
 	}
 
 	/**
@@ -34,9 +47,9 @@ class Autorzy
 	 * @param string $select
 	 * @return array
 	 */
-	public function pobierzWszystko($select)
+	public function pobierzWszystko($select, $params = [])
 	{
-		return $this->db->pobierzWszystko($select);
+		return $this->db->pobierzWszystko($select, $params);
 	}
 
 	/**
@@ -71,7 +84,8 @@ class Autorzy
 	 * @return bool
 	 */
 	public function usun($id)
-	{
+    {
+
 		return $this->db->usun('autorzy', $id);
 	}
 
@@ -91,5 +105,4 @@ class Autorzy
 		
 		return $this->db->aktualizuj('autorzy', $update, $id);
 	}
-
 }
